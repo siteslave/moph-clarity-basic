@@ -11,13 +11,17 @@ import 'clarity-icons';
 import 'clarity-icons/shapes/all-shapes';
 import { MainComponent } from './main/main.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { NewUserComponent } from './new-user/new-user.component';
+import { CreditComponent } from './credit/credit.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    NewUserComponent,
+    CreditComponent
   ],
   imports: [
     BrowserModule,

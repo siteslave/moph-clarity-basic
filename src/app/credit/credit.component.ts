@@ -1,15 +1,13 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
-  selector: 'app-main',
-  templateUrl: './main.component.html',
+  selector: 'app-credit',
+  templateUrl: './credit.component.html',
   styles: [],
   encapsulation: ViewEncapsulation.None
 })
-export class MainComponent implements OnInit {
+export class CreditComponent implements OnInit {
 
-  users: any = [];
-  
   constructor() { }
 
   ngOnInit() {
