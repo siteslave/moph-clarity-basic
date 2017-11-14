@@ -6,5 +6,20 @@ import { Component } from '@angular/core';
   styles: []
 })
 export class AppComponent {
-  title = 'app';
+  title = 'Angular';
+  fruits = ['Apple', 'Banana', 'Orange']
+  cars = [
+    { brand: 'Toyota', model: 'Revo' },
+    { brand: 'Honda', model: 'Civic' }
+  ]
+
+  showTitle() {
+    alert(this.title);
+  }
+
+  showKey(event: any) {
+    if (event.keyCode === 13) {
+      alert(this.title)
+    }
+  }
 }
