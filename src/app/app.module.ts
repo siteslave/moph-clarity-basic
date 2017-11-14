@@ -9,11 +9,15 @@ import { AppComponent } from './app.component';
 
 import 'clarity-icons';
 import 'clarity-icons/shapes/all-shapes';
+import { MainComponent } from './main/main.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MainComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

@@ -1,46 +1,51 @@
 <clr-main-container>
-  <clr-header class="header header-6">
+  <clr-header class="header-5">
     <div class="branding">
       <a href="..." class="nav-link">
-          <clr-icon shape="vm-bug"></clr-icon>
-          <span class="title">Project Clarity</span>
+        <clr-icon shape="vm-bug"></clr-icon>
+        <span class="title">Project Clarity</span>
+      </a>
+    </div>
+    <div class="header-actions">
+      <a href="javascript://" class="nav-link nav-icon">
+          <clr-icon shape="cog"></clr-icon>
       </a>
   </div>
-</clr-header>
+
+  </clr-header>
   <div class="content-container">
-      <div class="content-area">
-          ...
+    <div class="content-area">
+      <router-outlet></router-outlet>
+    </div>
 
-          <clr-icon shape="plus"></clr-icon>
-      </div>
+    <clr-vertical-nav [clrVerticalNavCollapsible]="true" 
+    [(clrVerticalNavCollapsed)]="collapsed" [clr-nav-level]="1">
 
-      <clr-vertical-nav [clrVerticalNavCollapsible]="true" [(clrVerticalNavCollapsed)]="collapsed">
-        
-        <a clrVerticalNavLink routerLink="./normal" routerLinkActive="active">
-            <clr-icon clrVerticalNavIcon shape="user"></clr-icon>
-            Normal
-        </a>
-        <a clrVerticalNavLink routerLink="./electric" routerLinkActive="active">
-            <clr-icon clrVerticalNavIcon shape="bolt"></clr-icon>
-            Electric
-        </a>
-        <a clrVerticalNavLink routerLink="./poison" routerLinkActive="active">
-            <clr-icon clrVerticalNavIcon shape="sad-face"></clr-icon>
-            Poison
-        </a>
-        <a clrVerticalNavLink routerLink="./grass" routerLinkActive="active">
-            <clr-icon clrVerticalNavIcon shape="bug"></clr-icon>
-            Grass
-        </a>
-        <a clrVerticalNavLink routerLink="./fighting" routerLinkActive="active">
-            <clr-icon clrVerticalNavIcon shape="shield"></clr-icon>
-            Fighting
-        </a>
-        <a clrVerticalNavLink routerLink="./credit" routerLinkActive="active">
-            <clr-icon clrVerticalNavIcon shape="certificate"></clr-icon>
-            Credit
-        </a>
+      <a clrVerticalNavLink routerLink="./normal" routerLinkActive="active">
+        <clr-icon clrVerticalNavIcon shape="user"></clr-icon>
+        Normal
+      </a>
+      <a clrVerticalNavLink routerLink="./electric" routerLinkActive="active">
+        <clr-icon clrVerticalNavIcon shape="bolt"></clr-icon>
+        Electric
+      </a>
+      <a clrVerticalNavLink routerLink="./poison" routerLinkActive="active">
+        <clr-icon clrVerticalNavIcon shape="sad-face"></clr-icon>
+        Poison
+      </a>
+      <a clrVerticalNavLink routerLink="./grass" routerLinkActive="active">
+        <clr-icon clrVerticalNavIcon shape="bug"></clr-icon>
+        Grass
+      </a>
+      <a clrVerticalNavLink routerLink="./fighting" routerLinkActive="active">
+        <clr-icon clrVerticalNavIcon shape="shield"></clr-icon>
+        Fighting
+      </a>
+      <a clrVerticalNavLink routerLink="./credit" routerLinkActive="active">
+        <clr-icon clrVerticalNavIcon shape="certificate"></clr-icon>
+        Credit
+      </a>
     </clr-vertical-nav>
-     
+
   </div>
 </clr-main-container>
