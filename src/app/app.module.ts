@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+
 import { ClarityModule } from 'clarity-angular';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,7 +15,7 @@ import { MainComponent } from './main/main.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { NewUserComponent } from './new-user/new-user.component';
 import { CreditComponent } from './credit/credit.component';
-
+import { UserService } from './user.service';
 
 @NgModule({
   declarations: [
@@ -27,9 +29,10 @@ import { CreditComponent } from './credit/credit.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpModule,
     ClarityModule.forRoot() 
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
