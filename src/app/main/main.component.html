@@ -1,48 +1,44 @@
-
 <clr-datagrid style="height: 100%;" [clrDgLoading]="loding">
 
   <clr-dg-column [clrDgField]="'email'">
-      <ng-container *clrDgHideableColumn="{hidden: false}">
-          Email
-      </ng-container>
+    <ng-container *clrDgHideableColumn="{hidden: false}">
+      Email
+    </ng-container>
   </clr-dg-column>
   <clr-dg-column [clrDgField]="'name.first'">
-      <ng-container *clrDgHideableColumn="{hidden: false}">
-          First name
-      </ng-container>
+    <ng-container *clrDgHideableColumn="{hidden: false}">
+      First name
+    </ng-container>
   </clr-dg-column>
   <clr-dg-column [clrDgField]="'name.last'">
-      <ng-container *clrDgHideableColumn="{hidden: false}">
-          Last name
-      </ng-container>
+    <ng-container *clrDgHideableColumn="{hidden: false}">
+      Last name
+    </ng-container>
   </clr-dg-column>
   <clr-dg-column>
-      <ng-container *clrDgHideableColumn="{hidden: false}">
-          Telephone
-      </ng-container>
+    <ng-container *clrDgHideableColumn="{hidden: false}">
+      Telephone
+    </ng-container>
   </clr-dg-column>
   <clr-dg-column>
-      <ng-container *clrDgHideableColumn="{hidden: false}">
-          Birth
-      </ng-container>
+    <ng-container *clrDgHideableColumn="{hidden: false}">
+      Birth
+    </ng-container>
   </clr-dg-column>
 
   <clr-dg-row *clrDgItems="let user of users">
-      <clr-dg-cell>{{user.email}}</clr-dg-cell>
-      <clr-dg-cell>{{user.name.first}}</clr-dg-cell>
-      <clr-dg-cell>{{user.name.last}}</clr-dg-cell>
-      <clr-dg-cell>{{user.phone}}</clr-dg-cell>
-      <clr-dg-cell>{{user.dob}}</clr-dg-cell>
+    <clr-dg-cell>{{user.email}}</clr-dg-cell>
+    <clr-dg-cell>{{user.name.first}}</clr-dg-cell>
+    <clr-dg-cell>{{user.name.last}}</clr-dg-cell>
+    <clr-dg-cell>{{user.phone}}</clr-dg-cell>
+    <clr-dg-cell>{{user.dob}}</clr-dg-cell>
   </clr-dg-row>
 
-  
+
   <clr-dg-footer>
-    {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
-    of {{pagination.totalItems}} users
+    {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} users
     <clr-dg-pagination #pagination [clrDgPageSize]="20"></clr-dg-pagination>
-</clr-dg-footer>
- 
+  </clr-dg-footer>
+
 
 </clr-datagrid>
-
-
