@@ -1,4 +1,4 @@
-<clr-datagrid style="height: 100%;" [clrDgLoading]="loding">
+<clr-datagrid style="height: 100%;" [clrDgLoading]="loding" [(clrDgSelected)]="selected">
 
   <clr-dg-column [clrDgField]="'username'">
     <ng-container *clrDgHideableColumn="{hidden: false}">
@@ -26,14 +26,22 @@
     </ng-container>
   </clr-dg-column>
 
-  <clr-dg-row *clrDgItems="let user of users">
+  <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
+    <clr-dg-action-overflow>
+      <button class="action-item" (click)="onEdit(user)">
+        <clr-icon shape="note"></clr-icon> Edit
+      </button>
+      <button class="action-item" (click)="onDelete(user)">
+        <clr-icon shape="trash"></clr-icon> Delete
+      </button>
+    </clr-dg-action-overflow>
     <clr-dg-cell>{{user.username}}</clr-dg-cell>
     <clr-dg-cell>{{user.first_name}}</clr-dg-cell>
     <clr-dg-cell>{{user.last_name}}</clr-dg-cell>
     <clr-dg-cell>{{user.user_type_name}}</clr-dg-cell>
     <clr-dg-cell>
-      <clr-icon shape="check" class="is-success" *ngIf="user.is_active==='Y'"></clr-icon>
-      <clr-icon shape="remove" class="is-danger" *ngIf="user.is_active==='N'"></clr-icon>
+      <clr-icon shape="user" class="is-success" *ngIf="user.is_active==='Y'"></clr-icon>
+      <clr-icon shape="user" class="is-danger has-badge" *ngIf="user.is_active==='N'"></clr-icon>
     </clr-dg-cell>
   </clr-dg-row>
 

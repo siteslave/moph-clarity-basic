@@ -11,6 +11,7 @@ export class MainComponent implements OnInit {
 
   users: any = [];
   loding = false;
+  selected = [];
 
   constructor(private userService: UserService) { }
 
