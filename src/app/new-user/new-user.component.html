@@ -5,15 +5,15 @@
         Add new user
       </div>
       <div class="card-block">
-          <clr-alert [clrAlertType]="'alert-danger'" *ngIf="isError">
-              <div class="alert-item">
-                  <span class="alert-text">
-                      {{errorMessage}}
-                  </span>
-              </div>
-          </clr-alert>
+        <clr-alert [clrAlertType]="'alert-danger'" *ngIf="isError">
+          <div class="alert-item">
+            <span class="alert-text">
+              {{errorMessage}}
+            </span>
+          </div>
+        </clr-alert>
 
-          
+
         <div class="card-text">
           <form>
             <section class="form-block">
@@ -69,10 +69,10 @@
                   <label for="userType">Active</label>
                 </div>
                 <div class="col-md-3">
-                    <div class="toggle-switch">
-                        <input type="checkbox" id="isActive" name="isActive" [(ngModel)]="isActive">
-                        <label for="isActive">&nbsp;</label>
-                    </div>
+                  <div class="toggle-switch">
+                    <input type="checkbox" id="isActive" name="isActive" [(ngModel)]="isActive">
+                    <label for="isActive">&nbsp;</label>
+                  </div>
                 </div>
 
               </div>
@@ -82,7 +82,8 @@
         </div>
       </div>
       <div class="card-footer">
-        <button class="btn btn-sm btn-success" (click)="save()" [disabled]="!username || !firstName || !lastName || !userType">
+        <button class="btn btn-sm btn-success" [clrLoading]="saving"
+        (click)="save()" [disabled]="saving || !username || !password || !firstName || !lastName || !userType">
           <clr-icon shape="floppy"></clr-icon> Save data
         </button>
         <button class="btn btn-sm btn-danger" routerLink="/">Back</button>

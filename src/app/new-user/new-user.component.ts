@@ -20,6 +20,7 @@ export class NewUserComponent implements OnInit {
 
   errorMessage: string;
   isError: boolean = false;
+  saving: boolean = false;
 
   constructor(private userService: UserService, private router: Router) { }
 
@@ -27,6 +28,8 @@ export class NewUserComponent implements OnInit {
   }
 
   async save() {
+    this.saving = true;
+    try {
     const isActive = this.isActive ? 'Y' : 'N';
     let rs = await this.userService.save(
       this.username, 
@@ -39,8 +42,19 @@ export class NewUserComponent implements OnInit {
     if (rs.ok) {
       this.router.navigate(['/']);
     } else {
+      this.saving = false;
       this.isError = true;
       this.errorMessage = rs.error;
+    }
+    } catch (error) {
+      console.log(error);
+      this.isError = true;
+      if (error.status === 0) {
+        this.errorMessage = 'ไม่สามารถเชื่อมต่อกับ Server ได้';
+      } else {
+        this.errorMessage = 'Server error: codt=' + error.status;
+      }
+      this.saving = false;
     }
   }
 

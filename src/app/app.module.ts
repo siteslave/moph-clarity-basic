@@ -16,6 +16,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { NewUserComponent } from './new-user/new-user.component';
 import { CreditComponent } from './credit/credit.component';
 import { UserService } from './user.service';
+import { environment } from './../environments/environment';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,10 @@ import { UserService } from './user.service';
     HttpModule,
     ClarityModule.forRoot() 
   ],
-  providers: [UserService],
+  providers: [
+    {provide: 'API_URL', useValue: environment.apiUrl},
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

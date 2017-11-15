@@ -6,6 +6,9 @@ import { Component } from '@angular/core';
   styles: []
 })
 export class AppComponent {
+
+  collapsed: boolean = true;
+
   title = 'Angular';
   fruits = ['Apple', 'Banana', 'Orange']
   cars = [
