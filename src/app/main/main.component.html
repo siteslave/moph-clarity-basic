@@ -1,37 +1,40 @@
 <clr-datagrid style="height: 100%;" [clrDgLoading]="loding">
 
-  <clr-dg-column [clrDgField]="'email'">
+  <clr-dg-column [clrDgField]="'username'">
     <ng-container *clrDgHideableColumn="{hidden: false}">
-      Email
+      Username
     </ng-container>
   </clr-dg-column>
-  <clr-dg-column [clrDgField]="'name.first'">
+  <clr-dg-column [clrDgField]="'first_name'">
     <ng-container *clrDgHideableColumn="{hidden: false}">
       First name
     </ng-container>
   </clr-dg-column>
-  <clr-dg-column [clrDgField]="'name.last'">
+  <clr-dg-column [clrDgField]="'last_name'">
     <ng-container *clrDgHideableColumn="{hidden: false}">
       Last name
     </ng-container>
   </clr-dg-column>
-  <clr-dg-column>
+  <clr-dg-column [clrDgField]="'user_type_name'">
     <ng-container *clrDgHideableColumn="{hidden: false}">
-      Telephone
+      Type
     </ng-container>
   </clr-dg-column>
-  <clr-dg-column>
+  <clr-dg-column [clrDgField]="'is_active'">
     <ng-container *clrDgHideableColumn="{hidden: false}">
-      Birth
+      Active
     </ng-container>
   </clr-dg-column>
 
   <clr-dg-row *clrDgItems="let user of users">
-    <clr-dg-cell>{{user.email}}</clr-dg-cell>
-    <clr-dg-cell>{{user.name.first}}</clr-dg-cell>
-    <clr-dg-cell>{{user.name.last}}</clr-dg-cell>
-    <clr-dg-cell>{{user.phone}}</clr-dg-cell>
-    <clr-dg-cell>{{user.dob}}</clr-dg-cell>
+    <clr-dg-cell>{{user.username}}</clr-dg-cell>
+    <clr-dg-cell>{{user.first_name}}</clr-dg-cell>
+    <clr-dg-cell>{{user.last_name}}</clr-dg-cell>
+    <clr-dg-cell>{{user.user_type_name}}</clr-dg-cell>
+    <clr-dg-cell>
+      <clr-icon shape="check" class="is-success" *ngIf="user.is_active==='Y'"></clr-icon>
+      <clr-icon shape="remove" class="is-danger" *ngIf="user.is_active==='N'"></clr-icon>
+    </clr-dg-cell>
   </clr-dg-row>
 
 

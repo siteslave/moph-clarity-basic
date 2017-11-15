@@ -7,8 +7,14 @@ export class UserService {
 
   constructor(private http: Http) { }
 
-  async getUsers() {
+  async Test() {
     let url = 'https://randomuser.me/api/?results=200';
+    let rs: any = await this.http.get(url).toPromise();
+    return rs.json();
+  }
+
+  async getUsers() {
+    let url = 'http://localhost:8080/api/users';
     let rs: any = await this.http.get(url).toPromise();
     return rs.json();
   }

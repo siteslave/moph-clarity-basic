@@ -22,7 +22,7 @@ export class MainComponent implements OnInit {
     this.loding = true;
     let rs = await this.userService.getUsers();
     // console.log(rs);
-    this.users = rs.results;
+    this.users = rs.rows;
     this.loding = false;
   }
 
