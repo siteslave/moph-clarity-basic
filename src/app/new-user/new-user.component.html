@@ -2,7 +2,8 @@
   <div class="col-md-8 push-md-2">
     <div class="card">
       <div class="card-header">
-        Add new user
+        <span *ngIf="!userId">Add new user</span>
+        <span *ngIf="userId">Edit new user</span>
       </div>
       <div class="card-block">
         <clr-alert [clrAlertType]="'alert-danger'" *ngIf="isError">
@@ -13,7 +14,6 @@
           </div>
         </clr-alert>
 
-
         <div class="card-text">
           <form>
             <section class="form-block">
@@ -22,7 +22,7 @@
                   <label for="username">Username</label>
                 </div>
                 <div class="col-md-10">
-                  <input class="form-control" type="text" name="username" [(ngModel)]="username" id="username">
+                  <input class="form-control" [disabled]="userId" type="text" name="username" [(ngModel)]="username" id="username">
                 </div>
               </div>
               <div class="form-group row">
@@ -54,11 +54,7 @@
                 <div class="col-md-3">
                   <div class="select">
                     <select id="userType" [(ngModel)]="userType" name="userType">
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>50000000</option>
+                      <option *ngFor="let t of types" [value]="t.user_type_id">{{t.user_type_name}}</option>
                     </select>
                   </div>
                 </div>
@@ -83,7 +79,7 @@
       </div>
       <div class="card-footer">
         <button class="btn btn-sm btn-success" [clrLoading]="saving"
-        (click)="save()" [disabled]="saving || !username || !password || !firstName || !lastName || !userType">
+        (click)="save()" [disabled]="saving || !username || (!password && !userId) || !firstName || !lastName || !userType">
           <clr-icon shape="floppy"></clr-icon> Save data
         </button>
         <button class="btn btn-sm btn-danger" routerLink="/">Back</button>

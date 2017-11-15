@@ -26,12 +26,12 @@
     </ng-container>
   </clr-dg-column>
 
-  <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
+  <clr-dg-row *clrDgItems="let user of users; let idx = index;" [clrDgItem]="user">
     <clr-dg-action-overflow>
-      <button class="action-item" (click)="onEdit(user)">
+      <button class="action-item" routerLink="/edit/{{user.user_id}}">
         <clr-icon shape="note"></clr-icon> Edit
       </button>
-      <button class="action-item" (click)="onDelete(user)">
+      <button class="action-item" (click)="remove(user, idx)">
         <clr-icon shape="trash"></clr-icon> Delete
       </button>
     </clr-dg-action-overflow>

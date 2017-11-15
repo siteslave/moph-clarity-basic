@@ -19,6 +19,16 @@ export class MainComponent implements OnInit {
     this.getUsers();
   }
 
+  async remove(user: any, idx: any) {
+    if (confirm('Are you sure? ['+ user.username +']')) {
+      let rs = await this.userService.remove(user.user_id);
+      if (rs.ok) {
+        // this.getUsers();
+        this.users.splice(idx, 1);
+      }
+    }
+  }
+
   async getUsers() {
     this.loding = true;
     let rs = await this.userService.getUsers();

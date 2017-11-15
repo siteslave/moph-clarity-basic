@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full' },
   { path: 'main', component: MainComponent },
   { path: 'new', component: NewUserComponent },
+  { path: 'edit/:userId', component: NewUserComponent },
   { path: 'credit', component: CreditComponent },
   { path: '**', component: PageNotFoundComponent },
 ];

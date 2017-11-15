@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { UserService } from '../user.service';
 
@@ -18,26 +18,60 @@ export class NewUserComponent implements OnInit {
   isActive: boolean = true;
   userType: any;
 
+  userId: any;
+
+  types: any = [];
+
   errorMessage: string;
   isError: boolean = false;
   saving: boolean = false;
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(
+    private userService: UserService, 
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
+    this.userId = this.route.snapshot.params.userId;
+   }
 
-  ngOnInit() {
+  async ngOnInit() {
+
+    if (this.userId) {
+      let rs = await this.userService.getUserDetail(this.userId);
+      this.username = rs.rows.username;
+      this.firstName = rs.rows.first_name;
+      this.lastName = rs.rows.last_name;
+      this.userType = rs.rows.user_type_id;
+      this.isActive = rs.rows.is_active === 'Y' ? true : false;
+    }
+
+    let rs = await this.userService.getUserTypes();
+    this.types = rs.rows;
   }
 
   async save() {
     this.saving = true;
     try {
     const isActive = this.isActive ? 'Y' : 'N';
-    let rs = await this.userService.save(
-      this.username, 
-      this.password, 
-      this.firstName, 
-      this.lastName, 
-      this.userType, 
-      isActive);
+    let rs = null;
+
+    if (this.userId) {
+      rs = await this.userService.update(
+        this.userId, 
+        this.password, 
+        this.firstName, 
+        this.lastName, 
+        this.userType, 
+        isActive);
+    } else {
+      rs = await this.userService.save(
+        this.username, 
+        this.password, 
+        this.firstName, 
+        this.lastName, 
+        this.userType, 
+        isActive);
+    }
 
     if (rs.ok) {
       this.router.navigate(['/']);
