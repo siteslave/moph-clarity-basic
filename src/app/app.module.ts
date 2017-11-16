@@ -11,23 +11,14 @@ import { AppComponent } from './app.component';
 
 import 'clarity-icons';
 import 'clarity-icons/shapes/all-shapes';
-import { MainComponent } from './main/main.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { NewUserComponent } from './new-user/new-user.component';
-import { CreditComponent } from './credit/credit.component';
-import { UserService } from './user.service';
-import { environment } from './../environments/environment';
-import { LayoutComponent } from './layout/layout.component';
+
 import { LoginModule } from './login/login.module';
+import { environment } from './../environments/environment';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainComponent,
-    PageNotFoundComponent,
-    NewUserComponent,
-    CreditComponent,
-    LayoutComponent
   ],
   imports: [
     BrowserModule,
@@ -35,11 +26,11 @@ import { LoginModule } from './login/login.module';
     FormsModule,
     HttpModule,
     ClarityModule.forRoot(),
-    LoginModule
+    LoginModule,
+    AdminModule
   ],
   providers: [
     {provide: 'API_URL', useValue: environment.apiUrl},
-    UserService
   ],
   bootstrap: [AppComponent]
 })
