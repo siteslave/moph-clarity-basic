@@ -74,7 +74,7 @@ export class NewUserComponent implements OnInit {
     }
 
     if (rs.ok) {
-      this.router.navigate(['/']);
+      this.router.navigate(['/admin']);
     } else {
       this.saving = false;
       this.isError = true;

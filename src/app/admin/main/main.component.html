@@ -20,6 +20,11 @@
       Type
     </ng-container>
   </clr-dg-column>
+  <clr-dg-column [clrDgField]="'sex'">
+    <ng-container *clrDgHideableColumn="{hidden: false}">
+      Sex
+    </ng-container>
+  </clr-dg-column>
   <clr-dg-column [clrDgField]="'is_active'">
     <ng-container *clrDgHideableColumn="{hidden: false}">
       Active
@@ -28,17 +33,18 @@
 
   <clr-dg-row *clrDgItems="let user of users; let idx = index;" [clrDgItem]="user">
     <clr-dg-action-overflow>
-      <button class="action-item" routerLink="/edit/{{user.user_id}}">
+      <button class="action-item" routerLink="/admin/edit/{{user.user_id}}">
         <clr-icon shape="note"></clr-icon> Edit
       </button>
       <button class="action-item" (click)="remove(user, idx)">
         <clr-icon shape="trash"></clr-icon> Delete
       </button>
     </clr-dg-action-overflow>
-    <clr-dg-cell>{{user.username}}</clr-dg-cell>
-    <clr-dg-cell>{{user.first_name}}</clr-dg-cell>
+    <clr-dg-cell>{{user.username | uppercase}}</clr-dg-cell>
+    <clr-dg-cell>{{user.first_name | lowercase}}</clr-dg-cell>
     <clr-dg-cell>{{user.last_name}}</clr-dg-cell>
     <clr-dg-cell>{{user.user_type_name}}</clr-dg-cell>
+    <clr-dg-cell>{{user.sex | toSexName}}</clr-dg-cell>
     <clr-dg-cell>
       <clr-icon shape="user" class="is-success" *ngIf="user.is_active==='Y'"></clr-icon>
       <clr-icon shape="user" class="is-danger has-badge" *ngIf="user.is_active==='N'"></clr-icon>

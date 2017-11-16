@@ -11,6 +11,7 @@ import { UserService } from './user.service';
 import { ClarityModule } from 'clarity-angular';
 import { FormsModule } from '@angular/forms';
 import { AuthGuardService } from '../services/auth-guard.service';
+import { ToSexNamePipe } from '../to-sex-name.pipe';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { AuthGuardService } from '../services/auth-guard.service';
     PageNotFoundComponent,
     NewUserComponent,
     CreditComponent,
-    LayoutComponent
+    LayoutComponent,
+    ToSexNamePipe
   ],
   providers: [UserService, AuthGuardService]
 })
