@@ -1,3 +1,5 @@
+declare var require: any;
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -15,6 +17,8 @@ import { ToSexNamePipe } from '../to-sex-name.pipe';
 import { ToThaiDatePipe } from '../to-thai-date.pipe';
 import { YellowTextDirective } from './yellow-text.directive';
 import { DirectivesModule } from '../directives/directives.module';
+import { ChartModule } from 'angular2-highcharts';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   imports: [
@@ -22,7 +26,8 @@ import { DirectivesModule } from '../directives/directives.module';
     AdminRoutingModule,
     ClarityModule,
     FormsModule,
-    DirectivesModule
+    DirectivesModule,
+    ChartModule.forRoot(require('highcharts'))
   ],
   declarations: [
     MainComponent,
@@ -32,7 +37,8 @@ import { DirectivesModule } from '../directives/directives.module';
     LayoutComponent,
     ToSexNamePipe,
     ToThaiDatePipe,
-    YellowTextDirective
+    YellowTextDirective,
+    DashboardComponent
   ],
   providers: [UserService, AuthGuardService]
 })

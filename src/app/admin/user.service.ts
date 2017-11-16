@@ -15,6 +15,12 @@ export class UserService {
   //   return rs.json();
   // }
 
+  async getUserTypesList() {
+    let url = this.url + '/api/user-types';
+    let rs: any = await this.authHttp.get(url).toPromise();
+    return rs.json();
+  }
+
   async getUsers() {
     let url = this.url + '/api/users';
     let rs: any = await this.authHttp.get(url).toPromise();
