@@ -14,73 +14,19 @@ export class DashboardComponent implements OnInit {
 
   constructor(private userService: UserService) {
 
-    this.options = {
-      chart: {
-        type: 'bar'
-      },
-      title: {
-        text: 'Historic World Population by Region'
-      },
-      subtitle: {
-        text: 'Source: <a href="https://en.wikipedia.org/wiki/World_population">Wikipedia.org</a>'
-      },
-      xAxis: {
-        categories: ['Africa', 'America', 'Asia', 'Europe', 'Oceania'],
-        title: {
-          text: null
-        }
-      },
-      yAxis: {
-        min: 0,
-        title: {
-          text: 'Population (millions)',
-          align: 'high'
-        },
-        labels: {
-          overflow: 'justify'
-        }
-      },
-      tooltip: {
-        valueSuffix: ' millions'
-      },
-      plotOptions: {
-        bar: {
-          dataLabels: {
-            enabled: true
-          }
-        }
-      },
-      legend: {
-        layout: 'vertical',
-        align: 'right',
-        verticalAlign: 'top',
-        x: -40,
-        y: 80,
-        floating: true,
-        borderWidth: 1,
-        shadow: true
-      },
-      credits: {
-        enabled: false
-      },
-      series: [{
-        name: 'Year 1800',
-        data: [107, 31, 635, 203, 2]
-      }, {
-        name: 'Year 1900',
-        data: [133, 156, 947, 408, 6]
-      }, {
-        name: 'Year 2012',
-        data: [1052, 954, 4250, 740, 38]
-      }]
-    };
-
   }
 
   async ngOnInit() {
-    let rs:any = await this.userService.getUserTypesList();
-    let data = [];
+    let rs: any = await this.userService.getUserTypesList();
+    let data = []; // pie
+
+    let colData = []; // column
+    let colCategories = []; // column
+
     rs.rows.forEach(v => {
+      colData.push(+v.total);
+      colCategories.push(v.user_type_name);
+
       let obj = {
         name: v.user_type_name,
         y: +v.total
@@ -90,6 +36,8 @@ export class DashboardComponent implements OnInit {
     });
 
     this.setPieChart(data);
+
+    this.setColumnChart(colData, colCategories);
   }
 
   setPieChart(data: any) {
@@ -99,32 +47,75 @@ export class DashboardComponent implements OnInit {
         plotBorderWidth: null,
         plotShadow: false,
         type: 'pie'
-    },
-    title: {
-        text: 'Browser market shares January, 2015 to May, 2015'
-    },
-    tooltip: {
+      },
+      title: {
+        text: 'User types'
+      },
+      tooltip: {
         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-    },
-    plotOptions: {
+      },
+      plotOptions: {
         pie: {
-            allowPointSelect: true,
-            cursor: 'pointer',
-            dataLabels: {
-                enabled: true,
-                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-                style: {
-                }
+          allowPointSelect: true,
+          cursor: 'pointer',
+          dataLabels: {
+            enabled: true,
+            format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+            style: {
             }
+          }
         }
-    },
-    series: [{
+      },
+      series: [{
         name: 'Brands',
         colorByPoint: true,
         data: data
-    }]
+      }]
     }
 
+  }
+
+  setColumnChart(data: any[], categories: any[]) {
+    this.options = {
+      chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Monthly Average Rainfall'
+    },
+    subtitle: {
+        text: 'Source: WorldClimate.com'
+    },
+    xAxis: {
+        categories: categories,
+        crosshair: true
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Rainfall (mm)'
+        }
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+        }
+    },
+    series: [{
+        name: 'จำนวน',
+        data: data
+
+    }]
+    }
   }
 
 }
