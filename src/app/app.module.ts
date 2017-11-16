@@ -15,6 +15,7 @@ import 'clarity-icons/shapes/all-shapes';
 import { LoginModule } from './login/login.module';
 import { environment } from './../environments/environment';
 import { AdminModule } from './admin/admin.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { AdminModule } from './admin/admin.module';
     HttpModule,
     ClarityModule.forRoot(),
     LoginModule,
-    AdminModule
+    AdminModule,
+    AuthModule
   ],
   providers: [
     {provide: 'API_URL', useValue: environment.apiUrl},

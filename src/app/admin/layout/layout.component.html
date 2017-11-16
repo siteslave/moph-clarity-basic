@@ -1,7 +1,7 @@
 <clr-main-container>
   <clr-header class="header-5">
     <div class="branding">
-      <a href="..." class="nav-link">
+      <a href="/admin" class="nav-link">
         <clr-icon shape="vm-bug"></clr-icon>
         <span class="title">Project Clarity</span>
       </a>
@@ -21,16 +21,16 @@
     <clr-vertical-nav [clrVerticalNavCollapsible]="true" 
     [(clrVerticalNavCollapsed)]="collapsed" [clr-nav-level]="1">
 
-      <a clrVerticalNavLink routerLink="/main" routerLinkActive="active">
+      <a clrVerticalNavLink routerLink="/admin" routerLinkActive="active">
         <clr-icon clrVerticalNavIcon shape="home"></clr-icon>
         หน้าหลัก
       </a>
-      <a clrVerticalNavLink routerLink="/new" routerLinkActive="active">
+      <a clrVerticalNavLink routerLink="/admin/new" routerLinkActive="active">
         <clr-icon clrVerticalNavIcon shape="plus"></clr-icon>
         เพิ่มผู้ใช้งาน
       </a>
 
-      <a clrVerticalNavLink routerLink="/credit" routerLinkActive="active">
+      <a clrVerticalNavLink routerLink="/admin/credit" routerLinkActive="active">
         <clr-icon clrVerticalNavIcon shape="certificate"></clr-icon>
         Credit
       </a>
