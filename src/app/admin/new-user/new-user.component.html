@@ -52,7 +52,7 @@
                   <label for="userType">User type</label>
                 </div>
                 <div class="col-md-3">
-                  <app-user-types></app-user-types>
+                  <app-user-types [selectedId]="userType" (onSelected)="onSelectedType($event)"></app-user-types>
                 </div>
 
               </div>

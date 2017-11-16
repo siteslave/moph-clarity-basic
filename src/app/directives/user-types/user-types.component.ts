@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input, Output, EventEmitter } from '@angular/core';
 import { UserService } from '../../admin/user.service';
 
 @Component({
@@ -8,6 +8,8 @@ import { UserService } from '../../admin/user.service';
   encapsulation: ViewEncapsulation.None
 })
 export class UserTypesComponent implements OnInit {
+  @Input() selectedId: any;
+  @Output() onSelected: EventEmitter<any> = new EventEmitter();
 
   types: any = [];
   userType: any;
@@ -19,6 +21,14 @@ export class UserTypesComponent implements OnInit {
     let rs = await this.userService.getUserTypes();
     this.types = rs.rows;
 
+    if (this.selectedId) {
+      this.userType = this.selectedId;
+    }
+
+  }
+
+  onChange(event) {
+    this.onSelected.emit(this.userType);
   }
 
 }

@@ -1,5 +1,5 @@
 <div class="select">
-    <select id="userType" [(ngModel)]="userType" name="userType">
+    <select id="userType" (change)="onChange($event)" [(ngModel)]="userType" name="userType">
       <option *ngFor="let t of types" [value]="t.user_type_id">{{t.user_type_name}}</option>
     </select>
   </div>

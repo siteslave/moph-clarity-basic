@@ -90,4 +90,8 @@ export class NewUserComponent implements OnInit {
     }
   }
 
+  onSelectedType(event) {
+    this.userType = event;
+  }
+
 }
