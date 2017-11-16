@@ -52,11 +52,7 @@
                   <label for="userType">User type</label>
                 </div>
                 <div class="col-md-3">
-                  <div class="select">
-                    <select id="userType" [(ngModel)]="userType" name="userType">
-                      <option *ngFor="let t of types" [value]="t.user_type_id">{{t.user_type_name}}</option>
-                    </select>
-                  </div>
+                  <app-user-types></app-user-types>
                 </div>
 
               </div>

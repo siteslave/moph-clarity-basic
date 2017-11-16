@@ -13,13 +13,16 @@ import { FormsModule } from '@angular/forms';
 import { AuthGuardService } from '../services/auth-guard.service';
 import { ToSexNamePipe } from '../to-sex-name.pipe';
 import { ToThaiDatePipe } from '../to-thai-date.pipe';
+import { YellowTextDirective } from './yellow-text.directive';
+import { DirectivesModule } from '../directives/directives.module';
 
 @NgModule({
   imports: [
     CommonModule,
     AdminRoutingModule,
     ClarityModule,
-    FormsModule
+    FormsModule,
+    DirectivesModule
   ],
   declarations: [
     MainComponent,
@@ -28,7 +31,8 @@ import { ToThaiDatePipe } from '../to-thai-date.pipe';
     CreditComponent,
     LayoutComponent,
     ToSexNamePipe,
-    ToThaiDatePipe
+    ToThaiDatePipe,
+    YellowTextDirective
   ],
   providers: [UserService, AuthGuardService]
 })

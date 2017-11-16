@@ -45,7 +45,7 @@
         <clr-icon shape="trash"></clr-icon> Delete
       </button>
     </clr-dg-action-overflow>
-    <clr-dg-cell>{{user.username | uppercase}}</clr-dg-cell>
+    <clr-dg-cell appYellowText>{{user.username | uppercase}}</clr-dg-cell>
     <clr-dg-cell>{{user.first_name | lowercase}}</clr-dg-cell>
     <clr-dg-cell>{{user.last_name}}</clr-dg-cell>
     <clr-dg-cell>{{user.user_type_name}}</clr-dg-cell>
@@ -62,6 +62,5 @@
     {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} users
     <clr-dg-pagination #pagination [clrDgPageSize]="20"></clr-dg-pagination>
   </clr-dg-footer>
-
 
 </clr-datagrid>

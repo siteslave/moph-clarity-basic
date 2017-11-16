@@ -45,8 +45,6 @@ export class NewUserComponent implements OnInit {
       this.isActive = rs.rows.is_active === 'Y' ? true : false;
     }
 
-    let rs = await this.userService.getUserTypes();
-    this.types = rs.rows;
   }
 
   async save() {
