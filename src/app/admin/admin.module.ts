@@ -12,6 +12,7 @@ import { ClarityModule } from 'clarity-angular';
 import { FormsModule } from '@angular/forms';
 import { AuthGuardService } from '../services/auth-guard.service';
 import { ToSexNamePipe } from '../to-sex-name.pipe';
+import { ToThaiDatePipe } from '../to-thai-date.pipe';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { ToSexNamePipe } from '../to-sex-name.pipe';
     NewUserComponent,
     CreditComponent,
     LayoutComponent,
-    ToSexNamePipe
+    ToSexNamePipe,
+    ToThaiDatePipe
   ],
   providers: [UserService, AuthGuardService]
 })

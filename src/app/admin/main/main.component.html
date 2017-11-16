@@ -25,6 +25,11 @@
       Sex
     </ng-container>
   </clr-dg-column>
+  <clr-dg-column [clrDgField]="'birth'">
+    <ng-container *clrDgHideableColumn="{hidden: false}">
+      Birth
+    </ng-container>
+  </clr-dg-column>
   <clr-dg-column [clrDgField]="'is_active'">
     <ng-container *clrDgHideableColumn="{hidden: false}">
       Active
@@ -45,6 +50,7 @@
     <clr-dg-cell>{{user.last_name}}</clr-dg-cell>
     <clr-dg-cell>{{user.user_type_name}}</clr-dg-cell>
     <clr-dg-cell>{{user.sex | toSexName}}</clr-dg-cell>
+    <clr-dg-cell>{{user.birth | toThaiDate}}</clr-dg-cell>
     <clr-dg-cell>
       <clr-icon shape="user" class="is-success" *ngIf="user.is_active==='Y'"></clr-icon>
       <clr-icon shape="user" class="is-danger has-badge" *ngIf="user.is_active==='N'"></clr-icon>

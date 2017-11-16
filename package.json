@@ -27,6 +27,7 @@
     "clarity-icons": "^0.10.13",
     "clarity-ui": "^0.10.13",
     "core-js": "^2.4.1",
+    "moment": "^2.19.2",
     "rxjs": "^5.5.2",
     "zone.js": "^0.8.14"
   },

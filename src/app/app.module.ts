@@ -18,6 +18,7 @@ import { AdminModule } from './admin/admin.module';
 import { AuthModule } from './auth/auth.module';
 import { JwtHelper } from 'angular2-jwt';
 import { ToSexNamePipe } from './to-sex-name.pipe';
+import { ToThaiDatePipe } from './to-thai-date.pipe';
 
 @NgModule({
   declarations: [
