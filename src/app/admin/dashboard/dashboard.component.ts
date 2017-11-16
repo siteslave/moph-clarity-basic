@@ -36,12 +36,14 @@ export class DashboardComponent implements OnInit {
     });
 
     this.setPieChart(data);
-
     this.setColumnChart(colData, colCategories);
   }
 
   setPieChart(data: any) {
     this.options2 = {
+      credits: {
+        enabled: false
+      },
       chart: {
         plotBackgroundColor: null,
         plotBorderWidth: null,
@@ -77,14 +79,17 @@ export class DashboardComponent implements OnInit {
 
   setColumnChart(data: any[], categories: any[]) {
     this.options = {
+      credits: {
+        enabled: false
+      },
       chart: {
         type: 'column'
     },
     title: {
-        text: 'Monthly Average Rainfall'
+        text: 'จำนวนผู้ใช้งานแยกตามประเภท'
     },
     subtitle: {
-        text: 'Source: WorldClimate.com'
+        text: ''
     },
     xAxis: {
         categories: categories,
@@ -93,13 +98,13 @@ export class DashboardComponent implements OnInit {
     yAxis: {
         min: 0,
         title: {
-            text: 'Rainfall (mm)'
+            text: 'จำนวน (คน)'
         }
     },
     tooltip: {
         headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
         pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-            '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+            '<td style="padding:0"><b>{point.y:.1f} คน</b></td></tr>',
         footerFormat: '</table>',
         shared: true,
         useHTML: true

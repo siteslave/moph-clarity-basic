@@ -1,3 +1,4 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -32,7 +33,7 @@ import { ToThaiDatePipe } from './to-thai-date.pipe';
     ClarityModule.forRoot(),
     LoginModule,
     AdminModule,
-    AuthModule
+    AuthModule,
   ],
   providers: [
     JwtHelper,

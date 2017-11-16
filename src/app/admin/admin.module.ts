@@ -1,5 +1,4 @@
 declare var require: any;
-
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -17,8 +16,13 @@ import { ToSexNamePipe } from '../to-sex-name.pipe';
 import { ToThaiDatePipe } from '../to-thai-date.pipe';
 import { YellowTextDirective } from './yellow-text.directive';
 import { DirectivesModule } from '../directives/directives.module';
-import { ChartModule } from 'angular2-highcharts';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ChartModule } from 'angular2-highcharts';
+import { HighchartsStatic } from 'angular2-highcharts/dist/HighchartsService';
+
+export function highchartsFactory() {
+  return require('highcharts');
+}
 
 @NgModule({
   imports: [
@@ -27,7 +31,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     ClarityModule,
     FormsModule,
     DirectivesModule,
-    ChartModule.forRoot(require('highcharts'))
+    ChartModule
   ],
   declarations: [
     MainComponent,
@@ -40,6 +44,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     YellowTextDirective,
     DashboardComponent
   ],
-  providers: [UserService, AuthGuardService]
+  providers: [
+    UserService,
+    AuthGuardService,
+    { provide: HighchartsStatic, useFactory: highchartsFactory} 
+  ]
 })
 export class AdminModule { }
