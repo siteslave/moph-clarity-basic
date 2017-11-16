@@ -5,11 +5,13 @@ import { MainComponent } from './main/main.component';
 import { NewUserComponent } from './new-user/new-user.component';
 import { CreditComponent } from './credit/credit.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AuthGuardService } from '../services/auth-guard.service';
 
 const routes: Routes = [
   {
     path: 'admin',
     component: LayoutComponent,
+    canActivate: [AuthGuardService],
     children: [
       { path: '', component: MainComponent },
       // { path: 'main', component: MainComponent },

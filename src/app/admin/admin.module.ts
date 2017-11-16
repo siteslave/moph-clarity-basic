@@ -10,6 +10,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { UserService } from './user.service';
 import { ClarityModule } from 'clarity-angular';
 import { FormsModule } from '@angular/forms';
+import { AuthGuardService } from '../services/auth-guard.service';
 
 @NgModule({
   imports: [
@@ -25,6 +26,6 @@ import { FormsModule } from '@angular/forms';
     CreditComponent,
     LayoutComponent
   ],
-  providers: [UserService]
+  providers: [UserService, AuthGuardService]
 })
 export class AdminModule { }
