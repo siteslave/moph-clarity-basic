@@ -16,6 +16,7 @@ import { LoginModule } from './login/login.module';
 import { environment } from './../environments/environment';
 import { AdminModule } from './admin/admin.module';
 import { AuthModule } from './auth/auth.module';
+import { JwtHelper } from 'angular2-jwt';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { AuthModule } from './auth/auth.module';
     AuthModule
   ],
   providers: [
+    JwtHelper,
     {provide: 'API_URL', useValue: environment.apiUrl},
   ],
   bootstrap: [AppComponent]
