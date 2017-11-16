@@ -7,8 +7,12 @@ export class AuthGuardService {
   constructor(private router: Router) { }
 
   canActivate() {
-    this.router.navigate(['/login']);
-    return false;
+    if (sessionStorage.getItem('token')) {
+      return true;
+    } else {
+      this.router.navigate(['/login']);
+      return false;
+    }
   }
-  
+
 }

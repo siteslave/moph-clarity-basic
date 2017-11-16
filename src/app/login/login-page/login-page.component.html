@@ -6,12 +6,12 @@
           <h5 class="hint">Manage user</h5>
       </label>
       <div class="login-group">
-          <input class="username" type="text" id="login_username" placeholder="Username">
-          <input class="password" type="password" id="login_password" placeholder="Password">
-          <div class="error active">
-              Invalid user name or password
+          <input class="username" type="text" name="username" [(ngModel)]="username" placeholder="Username">
+          <input class="password" type="password" name="password" [(ngModel)]="password" placeholder="Password">
+          <div class="error active" *ngIf="isError">
+              {{errorMessage}}
           </div>
-          <button type="submit" class="btn btn-primary">Login</button>
+          <button type="button" (click)="doLogin()" [disabled]="!username || !password" class="btn btn-primary">Login</button>
       </div>
   </form>
 </div>

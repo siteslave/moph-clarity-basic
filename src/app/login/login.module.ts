@@ -5,6 +5,7 @@ import { LoginRoutingModule } from './login-routing.module';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { ClarityModule } from 'clarity-angular';
 import { FormsModule } from '@angular/forms';
+import { BasicService } from '../services/basic.service';
 
 @NgModule({
   imports: [
@@ -13,6 +14,7 @@ import { FormsModule } from '@angular/forms';
     ClarityModule,
     FormsModule
   ],
+  providers: [BasicService],
   declarations: [LoginPageComponent]
 })
 export class LoginModule { }
