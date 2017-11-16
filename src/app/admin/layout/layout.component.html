@@ -7,10 +7,18 @@
       </a>
     </div>
     <div class="header-actions">
-      <a href="javascript://" class="nav-link nav-icon">
-          <clr-icon shape="cog"></clr-icon>
-      </a>
-  </div>
+      <clr-dropdown>
+        <button class="nav-text" clrDropdownTrigger>
+            {{fullname}}
+            <clr-icon shape="caret down"></clr-icon>
+        </button>
+        <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+            <a href="javascript://" clrDropdownItem>Preferences</a>
+            <a href="javascript://" clrDropdownItem (click)="logout()">Log out</a>
+        </clr-dropdown-menu>
+    </clr-dropdown>
+
+    </div>
 
   </clr-header>
   <div class="content-container">
