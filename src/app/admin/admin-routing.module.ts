@@ -13,8 +13,8 @@ const routes: Routes = [
     component: LayoutComponent,
     canActivate: [AuthGuardService],
     children: [
-      { path: '', component: MainComponent },
-      // { path: 'main', component: MainComponent },
+      { path: '', redirectTo: 'main', pathMatch: 'full' },
+      { path: 'main', component: MainComponent },
       { path: 'new', component: NewUserComponent }, // /admin/new
       { path: 'edit/:userId', component: NewUserComponent }, // /admin/edit/xxx
       { path: 'credit', component: CreditComponent }, // /admin/credit
