@@ -17,6 +17,8 @@ import { NewUserComponent } from './new-user/new-user.component';
 import { CreditComponent } from './credit/credit.component';
 import { UserService } from './user.service';
 import { environment } from './../environments/environment';
+import { LayoutComponent } from './layout/layout.component';
+import { LoginModule } from './login/login.module';
 
 @NgModule({
   declarations: [
@@ -24,14 +26,16 @@ import { environment } from './../environments/environment';
     MainComponent,
     PageNotFoundComponent,
     NewUserComponent,
-    CreditComponent
+    CreditComponent,
+    LayoutComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpModule,
-    ClarityModule.forRoot() 
+    ClarityModule.forRoot(),
+    LoginModule
   ],
   providers: [
     {provide: 'API_URL', useValue: environment.apiUrl},
