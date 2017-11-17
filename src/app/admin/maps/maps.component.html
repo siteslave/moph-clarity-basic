@@ -1,3 +1,10 @@
-<agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [mapTypeId]="mapTypeId">
-  <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+<agm-map 
+[latitude]="lat" 
+[longitude]="lng" 
+[zoom]="zoom"
+[mapTypeId]="mapTypeId"
+(mapClick)="onMapClick($event)"
+>
+  <!-- <agm-marker *ngFor="let m of markers" [latitude]="m.lat" [longitude]="m.lng"></agm-marker> -->
+  <agm-marker [latitude]="latMark" [longitude]="lngMark"></agm-marker>
 </agm-map>

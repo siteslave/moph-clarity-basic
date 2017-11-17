@@ -17,6 +17,10 @@ export class MapsComponent implements OnInit {
 
   lat: number = 51.678418;
   lng: number = 7.809007;
+  latMark: any;
+  lngMark: any;
+
+  markers: any = [];
 
   zoom: number = 18;
   mapTypeId: string = 'hybrid';
@@ -39,6 +43,13 @@ export class MapsComponent implements OnInit {
     } else {
       alert('Geolocation don\'t support')
     }
+  }
+
+  onMapClick(event) {
+    console.log(event);
+    // this.markers.push(event.coords);
+    this.latMark = event.coords.lat;
+    this.lngMark = event.coords.lng;
   }
 
 }
