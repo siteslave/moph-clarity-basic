@@ -20,6 +20,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ChartModule } from 'angular2-highcharts';
 import { HighchartsStatic } from 'angular2-highcharts/dist/HighchartsService';
 
+import { AgmCoreModule } from '@agm/core';
+import { MapsComponent } from './maps/maps.component';
+
 export function highchartsFactory() {
   return require('highcharts');
 }
@@ -31,7 +34,10 @@ export function highchartsFactory() {
     ClarityModule,
     FormsModule,
     DirectivesModule,
-    ChartModule
+    ChartModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyC_KR5yMsJ0vImVyv99tIXekbTHJuClRCc'
+    })
   ],
   declarations: [
     MainComponent,
@@ -42,7 +48,8 @@ export function highchartsFactory() {
     ToSexNamePipe,
     ToThaiDatePipe,
     YellowTextDirective,
-    DashboardComponent
+    DashboardComponent,
+    MapsComponent
   ],
   providers: [
     UserService,
