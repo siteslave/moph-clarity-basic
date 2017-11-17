@@ -1,6 +1,9 @@
 import { Component, OnInit, NgZone, ViewEncapsulation, ViewChild, ElementRef } from '@angular/core';
 import { MapsAPILoader } from '@agm/core';
+import { ActivatedRoute } from '@angular/router';
+
 import {} from 'googlemaps';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-maps',
@@ -29,10 +32,38 @@ export class MapsComponent implements OnInit {
   zoom: number = 18;
   mapTypeId: string = 'hybrid';
 
-  constructor(private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) { }
+  userId: any;
 
-  ngOnInit() {
-    this.setCurrentLocation();
+  constructor(
+    private mapsAPILoader: MapsAPILoader, 
+    private ngZone: NgZone,
+    private route: ActivatedRoute,
+    private userService: UserService
+  ) {
+    this.route.queryParams
+    .subscribe(params => {
+      console.log(params);
+      this.userId = params.userId;
+    })
+   }
+
+  async ngOnInit() {
+
+    // get info
+    if (this.userId) {
+      let rs = await this.userService.getLatLng(this.userId);
+      if (rs.lat && rs.lng) {
+        this.lat = rs.lat;
+        this.lng = rs.lng;
+        this.latMark = rs.lat;
+        this.lngMark = rs.lng;
+      } else {
+        this.setCurrentLocation();
+      }
+    } else {
+      this.setCurrentLocation();
+    }
+
     this.mapsAPILoader.load()
     .then(() => {
       const autocomplete = new google.maps.places.Autocomplete(this.search.nativeElement, {
@@ -70,6 +101,22 @@ export class MapsComponent implements OnInit {
     // this.markers.push(event.coords);
     this.latMark = event.coords.lat;
     this.lngMark = event.coords.lng;
+
+    this.lat = event.coords.lat;
+    this.lng = event.coords.lng;
+  }
+
+  async saveMap() {
+    if (this.userId && this.lat && this.lng) {
+      let rs = await this.userService.updateLatLng(this.userId, this.lat, this.lng);
+      if (rs.ok) {
+        alert('Success');
+      } else {
+        alert('Error: ' + rs.error);
+      }
+    } else {
+      alert('ข้อมูลไม่ครบ')
+    }
   }
 
 }

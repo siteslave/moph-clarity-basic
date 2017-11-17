@@ -27,6 +27,21 @@ export class UserService {
     return rs.json();
   }
 
+  async getLatLng(userId: any) {
+    let url = this.url + '/api/users/maps/' + userId;
+    let rs: any = await this.authHttp.get(url).toPromise();
+    return rs.json();
+  }
+
+  async updateLatLng(userId: any, lat: any, lng: any) {
+    let url = this.url + '/api/users/maps/' + userId;
+    let rs: any = await this.authHttp.put(url, {
+      lat: lat,
+      lng: lng
+    }).toPromise();
+    return rs.json();
+  }
+
   async remove(userId: any) {
     let url = this.url + '/api/users/' + userId;
     let rs: any = await this.authHttp.delete(url).toPromise();

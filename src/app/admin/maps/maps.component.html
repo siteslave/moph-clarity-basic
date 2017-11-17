@@ -7,6 +7,12 @@
         placeholder="Search for keywords...">
       </label>
   </form>
+  <div class="header-actions">
+    {{ lat }}, {{ lng }}
+    <a href="javascript://" class="nav-link nav-icon" (click)="saveMap()">
+      <clr-icon shape="floppy"></clr-icon>
+    </a>
+</div>
 </header>
 
 

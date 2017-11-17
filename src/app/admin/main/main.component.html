@@ -44,6 +44,9 @@
       <button class="action-item" (click)="remove(user, idx)">
         <clr-icon shape="trash"></clr-icon> Delete
       </button>
+      <a class="action-item" href="/admin/maps?userId={{user.user_id}}">
+        <clr-icon shape="map"></clr-icon> แสดงแผนที่
+      </a>
     </clr-dg-action-overflow>
     <clr-dg-cell appYellowText>{{user.username | uppercase}}</clr-dg-cell>
     <clr-dg-cell>{{user.first_name | lowercase}}</clr-dg-cell>
