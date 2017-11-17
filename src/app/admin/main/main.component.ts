@@ -1,5 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { UserService } from '../user.service';
+import { SocketService } from '../../socket.service';
+
+import { Socket } from 'ng-socket-io';
 
 @Component({
   selector: 'app-main',
@@ -13,10 +16,26 @@ export class MainComponent implements OnInit {
   loding = false;
   selected = [];
 
-  constructor(private userService: UserService) { }
+  constructor(
+    private userService: UserService, 
+    private socketService: SocketService,
+    private socket: Socket
+  ) { }
 
   ngOnInit() {
+
+    this.socket.on('added-user', (data: any) => {
+      console.log(data);
+      this.getUsers();
+    });
+
+    this.socketService.sendWelcome('Hello');
+
     this.getUsers();
+  }
+
+  sendAddUser() {
+    this.socket.emit('adduser');
   }
 
   async remove(user: any, idx: any) {

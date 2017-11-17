@@ -21,7 +21,13 @@ import { ChartModule } from 'angular2-highcharts';
 import { HighchartsStatic } from 'angular2-highcharts/dist/HighchartsService';
 
 import { AgmCoreModule } from '@agm/core';
+import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
+import { environment } from './../../environments/environment';
+
 import { MapsComponent } from './maps/maps.component';
+import { SocketService } from '../socket.service';
+
+const config: SocketIoConfig = { url: environment.apiUrl, options: {} };
 
 export function highchartsFactory() {
   return require('highcharts');
@@ -38,7 +44,8 @@ export function highchartsFactory() {
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAtEQEREbuwvqsDQsmvt-o8zGtMkbIragc',
       libraries: ['places']
-    })
+    }),
+    SocketIoModule.forRoot(config)
   ],
   declarations: [
     MainComponent,
@@ -54,6 +61,7 @@ export function highchartsFactory() {
   ],
   providers: [
     UserService,
+    SocketService,
     AuthGuardService,
     { provide: HighchartsStatic, useFactory: highchartsFactory} 
   ]
