@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { UserService } from '../user.service';
+import { Socket } from 'ng-socket-io';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,11 +13,25 @@ export class DashboardComponent implements OnInit {
   options: any;
   options2: any;
 
-  constructor(private userService: UserService) {
+  constructor(
+    private userService: UserService,     
+    private socket: Socket
+  ) {
 
   }
 
   async ngOnInit() {
+
+    this.socket.on('change-graph', () => {
+      this.generateChart();
+    });
+
+    this.generateChart();
+    
+  }
+
+  async generateChart() {
+
     let rs: any = await this.userService.getUserTypesList();
     let data = []; // pie
 
@@ -37,6 +52,7 @@ export class DashboardComponent implements OnInit {
 
     this.setPieChart(data);
     this.setColumnChart(colData, colCategories);
+
   }
 
   setPieChart(data: any) {
