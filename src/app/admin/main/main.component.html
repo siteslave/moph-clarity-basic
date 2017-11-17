@@ -44,7 +44,7 @@
       <button class="action-item" (click)="remove(user, idx)">
         <clr-icon shape="trash"></clr-icon> Delete
       </button>
-      <a class="action-item" href="/admin/maps?userId={{user.user_id}}">
+      <a class="action-item" [routerLink]="['/admin/maps']" [queryParams]="{userId: user.user_id}">
         <clr-icon shape="map"></clr-icon> แสดงแผนที่
       </a>
       <a class="action-item" href="javascript://" (click)="sendAddUser()">
