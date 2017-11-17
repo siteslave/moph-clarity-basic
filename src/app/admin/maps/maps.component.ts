@@ -1,4 +1,6 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, NgZone, ViewEncapsulation, ViewChild, ElementRef } from '@angular/core';
+import { MapsAPILoader } from '@agm/core';
+import {} from 'googlemaps';
 
 @Component({
   selector: 'app-maps',
@@ -15,6 +17,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class MapsComponent implements OnInit {
 
+  @ViewChild('search') search: ElementRef;
+
   lat: number = 51.678418;
   lng: number = 7.809007;
   latMark: any;
@@ -25,10 +29,26 @@ export class MapsComponent implements OnInit {
   zoom: number = 18;
   mapTypeId: string = 'hybrid';
 
-  constructor() { }
+  constructor(private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) { }
 
   ngOnInit() {
     this.setCurrentLocation();
+    this.mapsAPILoader.load()
+    .then(() => {
+      const autocomplete = new google.maps.places.Autocomplete(this.search.nativeElement, {
+        types: []
+      })
+
+      autocomplete.addListener('place_changed', () => {
+        this.ngZone.run(() => {
+          const place: google.maps.places.PlaceResult = autocomplete.getPlace();
+          console.log(place);
+
+          this.lat = place.geometry.location.lat();
+          this.lng = place.geometry.location.lng();
+        })
+      })
+    })
   }
 
   setCurrentLocation() {

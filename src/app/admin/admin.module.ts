@@ -36,7 +36,8 @@ export function highchartsFactory() {
     DirectivesModule,
     ChartModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyC_KR5yMsJ0vImVyv99tIXekbTHJuClRCc'
+      apiKey: 'AIzaSyAtEQEREbuwvqsDQsmvt-o8zGtMkbIragc',
+      libraries: ['places']
     })
   ],
   declarations: [
